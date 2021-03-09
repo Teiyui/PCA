@@ -35,6 +35,10 @@ Q = P / mul_final_exMean.size
 # SVD
 U, sigma, VT = np.linalg.svd(Q)
 print(U)
+# 逆序排列，将sigma对角矩阵迹上的元素按从大到小排列
+sort = sigma.argsort()[::-1]
+sigma = sigma[sort]
+U = U[:, sort]
 
 # calculate principle parameter
 X = np.dot(mul_final_exMean, U)
